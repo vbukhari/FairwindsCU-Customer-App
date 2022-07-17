@@ -1,0 +1,118 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Create New Customer</h4>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="exampleFormControlInput1" class="form-label">First Name</label>
+                            <input required formControlName="firstName" [ngClass]="{ 'is-invalid': isSubmitted && form.firstName.errors }"
+                            type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <div *ngIf="isSubmitted && form.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="form.firstName.errors">First Name is required</div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+                            <input required formControlName="lastName" [ngClass]="{ 'is-invalid': isSubmitted && form.lastName.errors }"
+                                type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                            <div *ngIf="isSubmitted && form.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="form.lastName.errors">Last Name is required</div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="exampleFormControlInput1" class="form-label">Date of Birth</label>
+                            <input required formControlName="dob" type="text" class="form-control" bsDatepicker
+                                [ngClass]="{ 'is-invalid': isSubmitted && form.dob.errors }" id="exampleFormControlInput1" placeholder="">
+                            <div *ngIf="isSubmitted && form.dob.errors" class="invalid-feedback">
+                                <div *ngIf="form.dob.errors">Date  of Birth is required</div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="exampleFormControlInput1" class="form-label">SSN</label>
+                            <input formControlName="ssn" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        </div>
+                      </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="exampleFormControlInput1" class="form-label">Email Address</label>
+                            <input required formControlName="email" type="email" class="form-control" 
+                                [ngClass]="{ 'is-invalid': isSubmitted && form.email.errors }"
+                                id="exampleFormControlInput1" placeholder="name@example.com">
+                                <div *ngIf="isSubmitted && form.email.errors" class="invalid-feedback">
+                                    <div *ngIf="form.email.errors">Email is required</div>
+                                </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+                            <input required formControlName="phone" type="tel" class="form-control"
+                                [ngClass]="{ 'is-invalid': isSubmitted && form.phone.errors }"
+                                id="exampleFormControlInput1" placeholder="">
+                                <div *ngIf="isSubmitted && form.phone.errors" class="invalid-feedback">
+                                    <div *ngIf="form.phone.errors">Phone is required</div>
+                                </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="exampleFormControlInput1" class="form-label">Join Date</label>
+                            <input type="text" formControlName="joinDate"
+                                placeholder="Datepicker"
+                                class="form-control"
+                                bsDatepicker>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="exampleFormControlInput1" class="form-label">Address</label>
+                            <input required formControlName="streetAddres" type="text" class="form-control"
+                            [ngClass]="{ 'is-invalid': isSubmitted && form.streetAddres.errors }"
+                             id="exampleFormControlInput1" placeholder="">
+                             <div *ngIf="isSubmitted && form.streetAddres.errors" class="invalid-feedback">
+                                <div *ngIf="form.streetAddres.errors">Street Address is required</div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4">
+                            <label for="exampleFormControlInput1" class="form-label">City</label>
+                            <input required formControlName="city" type="text" class="form-control"
+                            [ngClass]="{ 'is-invalid': isSubmitted && form.city.errors }"
+                             id="exampleFormControlInput1" placeholder="">
+                             <div *ngIf="isSubmitted && form.city.errors" class="invalid-feedback">
+                                <div *ngIf="form.city.errors">City is required</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="exampleFormControlInput1" class="form-label">State</label>
+                            <input required formControlName="state" type="text" class="form-control"
+                            [ngClass]="{ 'is-invalid': isSubmitted && form.state.errors }"
+                             id="exampleFormControlInput1" placeholder="">
+                             <div *ngIf="isSubmitted && form.state.errors" class="invalid-feedback">
+                                <div *ngIf="form.state.errors">State is required</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="exampleFormControlInput1" class="form-label">Zip Code</label>
+                            <input required formControlName="zipCode" type="text" class="form-control"
+                            [ngClass]="{ 'is-invalid': isSubmitted && form.zipCode.errors }"
+                             id="exampleFormControlInput1" placeholder="">
+                             <div *ngIf="isSubmitted && form.zipCode.errors" class="invalid-feedback">
+                                <div *ngIf="form.zipCode.errors">Zip code is required</div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-dark"
+                                >Submit</button>
+                        </div>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

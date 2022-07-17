@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <h4>Customers</h4>
+                        <button (click)="createNewCustomer()" type="button" class="btn btn-dark bi bi-plus" title="Create New Customer">Create New Customer</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                    <div class="row justify-content-start mb-3">
+                        <label for="staticEmail" class="col-lg-1 col-md-2 col-sm-2 col-form-label">Show</label>
+                        <div class="col-lg-1 col-md-2 col-sm-3">
+                            <select (change)="onSizeSelect($event.target)" class="form-select form-select" aria-label=".form-select-lg example">
+                                <option value="5" selected>5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="-1">All</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table-responsive">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                              <th scope="col">Customer #</th>
+                              <th scope="col">First</th>
+                              <th scope="col">Last</th>
+                              <th scope="col">Date of Birth</th>
+                              <th scope="col">Last 4 of SSN</th>
+                              <th scope="col">Age</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let customer of customerList" title="Click to View Details" style="cursor: pointer;"
+                                (click)="openPopup(customer)">
+                                <td>{{customer.customer_number}}</td>
+                                <td>{{customer.first_name}}</td>
+                                <td>{{customer.last_name}}</td>
+                                <td>{{customer.date_birth}}</td>
+                                <td>{{this.showLast4SSN(customer.ssn)}}</td>
+                                <td>{{this.calculateAge(customer.date_birth) }}</td>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Customer Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-6">
+                <label for="exampleFormControlInput1" class="form-label">Email Address</label>
+                <input readonly value="{{customerDetails?.email}}" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="col-3">
+                <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+                <input value={{customerDetails?.mobile_phone_number}} readonly type="tel" class="form-control" id="exampleFormControlInput1" placeholder="">
+            </div>
+            <div class="col-3">
+                <label for="exampleFormControlInput1" class="form-label">Join Date</label>
+                <input value={{customerDetails?.join_date}} readonly type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+            </div>
+        </div>
+      <div class="row">
+        <div class="col-12">
+            <label for="exampleFormControlInput1" class="form-label">Address</label>
+            <input value={{customerDetails?.primary_address?.address_line_1}} readonly type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+            <label for="exampleFormControlInput1" class="form-label">City</label>
+            <input value={{customerDetails?.primary_address?.city}} readonly type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="col-4">
+            <label for="exampleFormControlInput1" class="form-label">State</label>
+            <input value={{customerDetails?.primary_address?.state}} readonly type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+        <div class="col-4">
+            <label for="exampleFormControlInput1" class="form-label">Zip Code</label>
+            <input value={{customerDetails?.primary_address?.zip_code}} readonly type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
+      </div>
+    </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" 
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
