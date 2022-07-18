@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Customer } from '../models/customer/customer.model';
 
 const apiKey = 'e95894a0';
-const baseUrl = `https:/my.api.mockaroo.com/customers.json?key=${apiKey}`;
+const url = `https:/my.api.mockaroo.com/customers.json?key=${apiKey}`;
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +14,15 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   createCustomer(customer:any): Observable<any>{
-    return this.http.post(baseUrl, customer);
+    return this.http.post(url, customer);
   }
 
   getCustomersBySize(size:number): Observable<Customer[]> {
-      return this.http.get<Customer[]>(`${baseUrl}&size=${size}`);
+      return this.http.get<Customer[]>(`${url}&size=${size}`);
   }
 
   getAllCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(baseUrl);
+    return this.http.get<Customer[]>(url);
   }
 
 }
