@@ -7,11 +7,14 @@ yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
 
-node_modules
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
 
 # Angular cache
 .angular/
-.angular/cache/
+/.angular/cache
 
 # Firebase cache
 .firebase/
